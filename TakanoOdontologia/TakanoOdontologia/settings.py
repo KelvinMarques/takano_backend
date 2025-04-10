@@ -32,7 +32,8 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = ['127.0.0.1',
                      'localhost',
                      'takanoodontologia.com.br',
-                     'takanoodontologia']
+                     'takanoodontologia',
+                     'https://seashell-eel-890641.hostingersite.com',]
 # Application definition
 
 INSTALLED_APPS = [
@@ -60,7 +61,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:4200',  # URL do Angular
+    'http://localhost:4200',
+    'https://seashell-eel-890641.hostingersite.com',  # URL do Angular
 ]
 CORS_ALLOW_HEADERS = list(default_headers) + [
     'x-recaptcha-token',  # Adicione isso se estiver usando header customizado
