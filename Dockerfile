@@ -16,7 +16,7 @@ RUN mkdir -p /TakanoOdontologia
 WORKDIR /TakanoOdontologia
 
 RUN pip install pipenv
-COPY TakanoOdontologia/Pipfile Pipfile.lock /TakanoOdontologia/
+COPY Pipfile Pipfile.lock /TakanoOdontologia/
 RUN pipenv install --deploy --system
 COPY . /TakanoOdontologia
 
