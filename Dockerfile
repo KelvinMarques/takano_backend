@@ -11,14 +11,14 @@ RUN apt-get update && apt-get install -y \
     gcc \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /code
+RUN mkdir -p /TakanoOdontologia
 
-WORKDIR /code
+WORKDIR /TakanoOdontologia
 
 RUN pip install pipenv
-COPY Pipfile Pipfile.lock /code/
+COPY TakanoOdontologia/Pipfile Pipfile.lock /TakanoOdontologia/
 RUN pipenv install --deploy --system
-COPY . /code
+COPY . /TakanoOdontologia
 
 ENV SECRET_KEY "54iz1Ur506oRKzlRktAWmGLYvHG3oXe2ognJH1tczAYxJEmF4t"
 RUN python manage.py collectstatic --noinput
