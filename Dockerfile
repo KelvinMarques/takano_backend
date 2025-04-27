@@ -20,6 +20,7 @@ COPY Pipfile Pipfile.lock /TakanoOdontologia/
 RUN pipenv install --deploy --system
 COPY . /TakanoOdontologia
 
+WORKDIR ./TakanoOdontologia
 ENV SECRET_KEY "54iz1Ur506oRKzlRktAWmGLYvHG3oXe2ognJH1tczAYxJEmF4t"
 RUN python manage.py collectstatic --noinput
 
