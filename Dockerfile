@@ -1,34 +1,28 @@
-# Usa uma imagem Python enxuta
-FROM python:3.12-slim
+ARG PYTHON_VERSION=3.12-slim
 
-# Variáveis de ambiente para evitar prompts no build
+FROM python:${PYTHON_VERSION}
+
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Instala dependências do sistema (ex: para psycopg2 e gunicorn)
+# install psycopg2 dependencies.
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     gcc \
     && rm -rf /var/lib/apt/lists/*
 
-# Define o diretório de trabalho
-WORKDIR /TakanoOdontologia
+RUN mkdir -p /code
 
-# Copia os arquivos do projeto
-COPY . .
+WORKDIR /code
 
-# Instala o pipenv
-RUN pip install --upgrade pip pipenv
+RUN pip install pipenv
+COPY Pipfile Pipfile.lock /code/
+RUN pipenv install --deploy --system
+COPY . /code
 
-# Instala dependências de produção
-RUN pipenv install --deploy --ignore-pipfile
+ENV SECRET_KEY "54iz1Ur506oRKzlRktAWmGLYvHG3oXe2ognJH1tczAYxJEmF4t"
+RUN python manage.py collectstatic --noinput
 
-# Faz migrações e coleta os arquivos estáticos
-RUN pipenv run python manage.py collectstatic --noinput
-RUN pipenv run python manage.py migrate --noinput
-
-# Expondo a porta 8000
 EXPOSE 8000
 
-# Comando de inicialização usando gunicorn
-CMD ["pipenv", "run", "gunicorn", "TakanoOdontologia.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn","--bind",":8000","--workers","2","TakanoOdontologia.wsgi"]
