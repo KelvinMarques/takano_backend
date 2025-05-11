@@ -33,7 +33,8 @@ ALLOWED_HOSTS = ['127.0.0.1',
                      'localhost',
                      'takanoodontologia.com.br',
                      'takanoodontologia',
-                     'takano-backend.onrender.com',]
+                     'https://seashell-eel-890641.hostingersite.com',
+                     'https://takano-backend-black-violet-6208-production.up.railway.app']
 # Application definition
 
 INSTALLED_APPS = [
