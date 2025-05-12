@@ -78,7 +78,7 @@ def enviar_email(contato):
             Tipo de consulta: {contato.tipo_consulta}
             Horário preferido: {contato.horario_preferencia}
             """,
-            'kelvin_marques@outlook.com',
+            'takanoodontologia@hotmail.com',
             ['kapy.software@gmail.com'],  # Ajuste com o e-mail real do cliente
             fail_silently=True,
             html_message=mensagem_html 
