@@ -63,7 +63,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:4200',
-    'https://takanoodontologia.com.br',  # URL do Angular
+    'https://www.takanoodontologia.com.br',  # URL do Angular
 ]
 CORS_ALLOW_HEADERS = list(default_headers) + [
     'x-recaptcha-token',  # Adicione isso se estiver usando header customizado
