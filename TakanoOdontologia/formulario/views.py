@@ -79,7 +79,7 @@ def enviar_email(contato):
             Horário preferido: {contato.horario_preferencia}
             """,
             'kapy.software@gmail.com',
-            ['kelvin_marques@outlook.com'],  # Ajuste com o e-mail real do cliente takanoodontologia@hotmail.com
+            ['takanoodontologia@hotmail.com'],  # Ajuste com o e-mail real do cliente 
             fail_silently=True,
             html_message=mensagem_html 
             )
